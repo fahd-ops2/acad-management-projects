@@ -1,0 +1,6 @@
+{
+  "name": "Gestion de Projets Académiques (PFA/PFE)",
+  "description": "Plateforme complète de gestion des projets académiques (PFA, PFE, Mini-Projets) pour étudiants, encadrants, responsables pédagogiques et administrateurs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
