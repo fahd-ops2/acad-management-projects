@@ -108,7 +108,7 @@ export const Topbar = ({ handleDrawerToggle }) => {
         </Typography>
 
         {/* Role Switcher for instant demo evaluation */}
-        <FormControl size="small" sx={{ mr: 2, minWidth: 160 }}>
+        {/*<FormControl size="small" sx={{ mr: 2, minWidth: 160 }}>
           <Select
             value={activeRole}
             onChange={(e) => switchRole(e.target.value)}
@@ -126,7 +126,7 @@ export const Topbar = ({ handleDrawerToggle }) => {
               </MenuItem>
             ))}
           </Select>
-        </FormControl>
+        </FormControl>*/}
 
         {/* Dark/Light Toggle */}
         <Tooltip title="Changer le thème">

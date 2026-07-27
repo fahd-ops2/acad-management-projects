@@ -56,6 +56,7 @@ export const AdminDashboard = () => {
           </Typography>
         </Box>
         <Button
+        hidden="true"
           variant="contained"
           startIcon={<AddIcon />}
           onClick={() => navigate('/projets')}
@@ -105,7 +106,7 @@ export const AdminDashboard = () => {
       </Grid>
 
       <Grid container spacing={3}>
-        <Grid item xs={12} md={7}>
+        <Grid item xs={14} md={7}>
           <Paper sx={{ p: 3, borderRadius: 3, height: '100%' }}>
             <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
               Distribution des Projets par Statut du Cycle de Vie
@@ -135,55 +136,6 @@ export const AdminDashboard = () => {
           </Paper>
         </Grid>
 
-        <Grid item xs={12} md={5}>
-          <Paper sx={{ p: 3, borderRadius: 3, height: '100%' }}>
-            <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
-              Actions Rapides Administratives
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Button
-                variant="outlined"
-                fullWidth
-                size="large"
-                startIcon={<FolderIcon />}
-                onClick={() => navigate('/projets')}
-                sx={{ justifyContent: 'flex-start', py: 1.5, fontWeight: 600 }}
-              >
-                Gérer les Projets & Changer de Statut
-              </Button>
-              <Button
-                variant="outlined"
-                fullWidth
-                size="large"
-                startIcon={<PeopleIcon />}
-                onClick={() => navigate('/utilisateurs')}
-                sx={{ justifyContent: 'flex-start', py: 1.5, fontWeight: 600 }}
-              >
-                Gérer les Comptes Utilisateurs
-              </Button>
-              <Button
-                variant="outlined"
-                fullWidth
-                size="large"
-                startIcon={<SchoolIcon />}
-                onClick={() => navigate('/groupes')}
-                sx={{ justifyContent: 'flex-start', py: 1.5, fontWeight: 600 }}
-              >
-                Affecter les Encadrants aux Groupes
-              </Button>
-              <Button
-                variant="outlined"
-                fullWidth
-                size="large"
-                startIcon={<AssignmentTurnedInIcon />}
-                onClick={() => navigate('/soutenances')}
-                sx={{ justifyContent: 'flex-start', py: 1.5, fontWeight: 600 }}
-              >
-                Organiser les Planning de Soutenances
-              </Button>
-            </Box>
-          </Paper>
-        </Grid>
       </Grid>
     </Box>
   );

@@ -38,13 +38,13 @@ export const Sidebar = ({ mobileOpen, handleDrawerToggle }) => {
       case ROLES.ADMIN:
         return [
           { text: 'Tableau de bord', icon: <DashboardIcon />, path: '/dashboard' },
-          { text: 'Projets Académiques', icon: <FolderIcon />, path: '/projets' },
-          { text: 'Banque de Sujets', icon: <SubjectIcon />, path: '/sujets' },
-          { text: 'Groupes & Équipes', icon: <GroupsIcon />, path: '/groupes' },
-          { text: 'Gestion des Livrables', icon: <AssignmentTurnedInIcon />, path: '/livrables' },
-          { text: 'Soutenances & Jurys', icon: <EventAvailableIcon />, path: '/soutenances' },
+         // { text: 'Projets Académiques', icon: <FolderIcon />, path: '/projets' },
+         // { text: 'Banque de Sujets', icon: <SubjectIcon />, path: '/sujets' },
+         // { text: 'Groupes & Équipes', icon: <GroupsIcon />, path: '/groupes' },
+         // { text: 'Gestion des Livrables', icon: <AssignmentTurnedInIcon />, path: '/livrables' },
+         // { text: 'Soutenances & Jurys', icon: <EventAvailableIcon />, path: '/soutenances' },
           { text: 'Gestion des Comptes', icon: <PeopleIcon />, path: '/utilisateurs' },
-          { text: 'Échéancier Académique', icon: <AccessTimeIcon />, path: '/echeances' }
+         // { text: 'Échéancier Académique', icon: <AccessTimeIcon />, path: '/echeances' }
         ];
 
       case ROLES.RESPONSABLE:
@@ -85,7 +85,7 @@ export const Sidebar = ({ mobileOpen, handleDrawerToggle }) => {
         <SchoolIcon color="primary" sx={{ fontSize: 32 }} />
         <Box>
           <Typography variant="h6" fontWeight={800} color="primary" sx={{ lineHeight: 1.1 }}>
-            Academix PFA
+            Academia
           </Typography>
           <Typography variant="caption" color="text.secondary">
             Gestion de Projets

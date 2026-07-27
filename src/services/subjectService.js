@@ -1,6 +1,7 @@
 import { appConfig } from '../config/appConfig';
 import apiClient from '../api/apiClient';
 import { mockSubjects } from '../mock/subjects';
+import { projectService } from './projectService';
 
 const simulateDelay = (data, ms = appConfig.mockDelayMs) => {
   return new Promise((resolve) => setTimeout(() => resolve(data), ms));
@@ -31,8 +32,10 @@ export const subjectService = {
 
   async create(subjectData) {
     if (appConfig.useMockData) {
+      const subjectId = `sbj-${Date.now()}`;
+
       const newSubject = {
-        id: `sbj-${Date.now()}`,
+        id: subjectId,
         status: 'PROPOSE',
         dateCreated: new Date().toISOString().substring(0, 10),
         assignedGroupId: null,
@@ -40,11 +43,40 @@ export const subjectService = {
         assignedSupervisorId: null,
         ...subjectData
       };
-      subjectsStore.unshift(newSubject);
-      return simulateDelay(newSubject);
+
+      const projectPayload = {
+        title: subjectData.title,
+        description: subjectData.description,
+        subjectId: subjectId,
+        status: 'PROPOSE',
+        author: subjectData.author || 'Administrateur',
+        supervisorId: subjectData.assignedSupervisorId || null,
+        groupId: subjectData.assignedGroupId || null,
+        option: subjectData.option || subjectData.filiere || null
+      };
+
+      const [createdSubject, createdProject] = await Promise.all([
+        simulateDelay(newSubject),
+        projectService.create(projectPayload)
+      ]);
+
+      subjectsStore.unshift(createdSubject);
+      return { ...createdSubject, project: createdProject };
     } else {
-      const res = await apiClient.post('/subjects', subjectData);
-      return res.data;
+      const [subjectRes, projectRes] = await Promise.all([
+        apiClient.post('/subjects', subjectData),
+        projectService.create({
+          title: subjectData.title,
+          description: subjectData.description,
+          status: 'PROPOSE',
+          author: subjectData.author || 'Administrateur'
+        })
+      ]);
+
+      return {
+        ...subjectRes.data,
+        project: projectRes.data
+      };
     }
   },
 
